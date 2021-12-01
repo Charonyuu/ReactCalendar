@@ -6,8 +6,9 @@ function addCalendar(props) {
     
     return (
         <div className='AddCalendarMenu'>
+            <input type="text" placeholder='標題'/>
             
-        </div>
+        </div> 
     );
 }
 
