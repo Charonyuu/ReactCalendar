@@ -4,7 +4,7 @@
     align-items: center;
     color:#fff;
     background-color: #212121;
-    height: 2.5em;
+    height: 10vh;
     padding: 1em;
 }
 .footerMenu .footerObj{
@@ -12,6 +12,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 .footerMenu p{
     margin: 0;

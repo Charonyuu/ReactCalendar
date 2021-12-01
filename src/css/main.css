@@ -1,11 +1,16 @@
 .body{
     font-size: 14px;
-    background-color: #bdc3c7;
+    background-color: #212121;
     width: 100vw;
     height: 100vh;
+    
 }
 
-
+.main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 /* SideBar  */
 .CloseSidenav {
     height: 0;
@@ -20,7 +25,7 @@
     padding-top: 60px;
 }
 .OpenSidenav {
-    height: 38em;
+    height: 90%;
     width: 100%;
     position: fixed;
     z-index: 1;
@@ -31,6 +36,7 @@
     overflow-y: hidden;
     transition: 0.5s;
     padding-top: 2em;
+
 }
 .CloseSidenav span{
     display: none;
@@ -38,20 +44,18 @@
 .OpenSidenav span {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
-    font-size: 1.5em;
-    color: #818181;
+    font-size: 2em;
+    color: #fff;
     display: block;
     transition: 0.5s;
     cursor: pointer;
     font-weight: 700;
 }
 
-.OpenSidenav span:hover {
-    color: #f1f1f1;
-}
 
 .OpenSidenav .closebtn {
     position: absolute;
+    color: #818181;
     top: 0;
     right: 0.3em;
     font-size: 36px;
