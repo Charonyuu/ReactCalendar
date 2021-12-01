@@ -1,5 +1,4 @@
 import React,{useState} from 'react';
-import { BsFillPlusCircleFill } from "react-icons/bs";
 import './css/main.css';
 import AppMenu from './component/AppMenu';
 import FooterNav from './component/footerNav'
@@ -20,12 +19,10 @@ function App() {
       <div className={drawer}>
         <span  className="closebtn" onClick={() => closeDrawer()}>&times;</span>
         <span className='drawerLink'>今日天氣</span>
-        
       </div>
-      <div className='AddIcon'><BsFillPlusCircleFill/></div>
       <div className='footer'>
         <FooterNav/>
-    </div>
+      </div>
     </div>
   );
 }

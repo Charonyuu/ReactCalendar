@@ -11,7 +11,6 @@ function AppMenu(props) {
     <div className='Menubody'>
         <div><BsTextLeft size={20} onClick={()=>props.drawer()}/></div>
         <div className='Logo'>行事曆</div>
-        <div><BsSearch size={18}/></div>
     </div>
   );
 }
