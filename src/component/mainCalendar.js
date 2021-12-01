@@ -4,7 +4,7 @@ import '../css/mainCalendar.css';
 function mainCalendar(props) {
   return (
     <div className='Calendarbody'>
-        123
+        行事曆位置
     </div>
   );
 }

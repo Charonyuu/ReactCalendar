@@ -4,8 +4,7 @@
     align-items: center;
     color:#fff;
     background-color: #212121;
-    height: 10vh;
-    padding: 1em;
+    padding: 0.7em 0.8em;
 }
 .footerMenu .footerObj{
     display: flex;

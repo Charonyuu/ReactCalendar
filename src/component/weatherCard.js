@@ -13,7 +13,7 @@ function WeatherCard(props) {
         windSpeed: 0,
         humid: 0,
     });
-    const [updateWeather] = useState(props.update)
+
     useEffect(()=>{
         async function getWeatherData(){
             const response = await fetch(

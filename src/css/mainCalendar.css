@@ -1,7 +1,11 @@
 .Calendarbody{
-    height: 73vh;
+    height: 78vh;
     width: 95%;
     background-color: #606060;
     border-radius: 0.5em;
     color: #fff;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
