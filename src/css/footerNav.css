@@ -1,0 +1,29 @@
+.footerMenu{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color:#fff;
+    background-color: #212121;
+    height: 2.5em;
+    padding: 1em;
+}
+.footerMenu .footerObj{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.footerMenu p{
+    margin: 0;
+    padding: 0;
+    font-size: 0.8em;
+}
+.footerMenu span{
+    background-color: rgba(63,191, 91, 0.3);
+    width: 2em;
+    height: 2em;
+    border-radius: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

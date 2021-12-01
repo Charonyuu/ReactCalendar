@@ -1,0 +1,22 @@
+.Menubody{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color:#fff;
+    background-color: #212121;
+    height: 2.2em;
+    padding: 0.7em 1.2em ;
+}
+.Menubody div{
+    cursor: pointer;;
+}
+.Logo{
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.2em;
+    font-weight: 700;
+    margin-bottom: 0.5em;
+}

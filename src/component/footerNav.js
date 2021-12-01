@@ -1,0 +1,17 @@
+import React from 'react';
+import { BsSearch,BsPlus,BsCloudSun,BsPencilSquare } from "react-icons/bs";
+import '../css/footerNav.css';
+
+function FooterNav() {
+  return (
+    <div className='footerMenu'>
+        <div className='footerObj'><span><BsCloudSun size={15}/></span><p>天氣</p></div>
+        <div className='footerObj'><span><BsPencilSquare size={15}/></span><p>備忘錄</p></div>
+        <div className='footerObj'><span><BsPlus size={18}/></span><p>建立</p></div>
+        <div className='footerObj'><span><BsSearch size={13}/></span><p>搜尋</p></div>
+        <div className='footerObj'><span><BsSearch size={15}/></span><p>設定</p></div>
+    </div>
+  );
+}
+
+export default FooterNav;
