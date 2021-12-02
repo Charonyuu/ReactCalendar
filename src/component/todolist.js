@@ -2,6 +2,7 @@ import React, { useState,useEffect } from 'react';
 import '../css/todolist.css';
 import { BsPencilSquare } from "react-icons/bs";
 import moment from 'moment'
+import {Link} from 'react-router-dom';
 
 
 //database
@@ -32,10 +33,15 @@ function Todolist(props) {
     return (
         <div className='TodoListMenu'>
             {listData.map((list, index)=>
-                <div className='todolist' key={index}>
-                    <span className='Bigtitle'>{list.title}</span> 
-                    <span className='time'>{list.time}</span>
+              <Link to={{
+                pathname: "/TodoListContent",
+                state: list
+                }} className='todolist' key={index}>
+                <div>
+                  <span className='Bigtitle'>{list.title}</span> 
+                  <span className='time'>{list.time}</span>
                 </div>
+              </Link>
             )}
             <div className='AddIcon'><BsPencilSquare size={25}/></div>
         </div>

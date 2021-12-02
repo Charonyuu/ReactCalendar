@@ -30,6 +30,7 @@
     display:inline-block;
     right: 0.8em;
     top: 1.8em;
+    color: #828282;
 }
 .TodoListMenu .AddIcon{
     position: absolute;

@@ -1,0 +1,48 @@
+.TodoListContentBody{
+    font-size: 14px;
+    height:100vh;
+    width:100vw;
+    background-color: #212121;
+    color: #fff;
+}
+.TodoListContentBody .Header{
+    height: 5vh;
+    display: flex;
+    padding: 1.5em 1.3em;
+    position: relative;
+    align-items: center;
+}
+.TodoListContentBody .Title{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.5em;
+    font-weight: 700;
+    padding-bottom: 0.3em;
+}
+.TodoListContentBody .Body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.TodoListContentBody input{
+    border: #212121;
+    background-color: #212121;
+    color: #fff;
+    font-size: 1.5em;
+    margin-left: 0.85em;
+    margin-bottom: 1em;
+}
+.TodoListContentBody textarea{
+
+    border: #212121;
+    background-color: #212121;
+    width: 90%;
+    height: 75vh;
+    color: #fff;
+    font-size: 1.5em;
+    margin-left: 0.85em;
+    margin-bottom: 1em;
+}
+
