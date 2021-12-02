@@ -6,7 +6,17 @@
     flex-direction: column;
     align-items: center;
     height: 81vh;
-    padding: 0.8em 1.5em;
+    padding: 0.8em 1em;
+    transition: 2s;
+}
+.TodoListMenu .todolistBar{
+    width: 100%;
+    height: 3.5em;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 0.5em;
+    transition: 3s;
 }
 .TodoListMenu .todolist{
     background-color: #212121;
@@ -18,8 +28,31 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin-top: 0.5em;
+    transition: 3s;
+    z-index: 1;
 }
+.TodoListMenu .todolistBar .hideDeleteBtn{
+    visibility: hidden;
+    transition: 0.5s;
+}
+.TodoListMenu .todolistBar .hideDeleteBtn .icon{
+    display: none;
+    transition: 0.5s;
+}
+.TodoListMenu .todolistBar .showDeleteBtn{
+    visibility: visible;
+    background-color: rgba(214, 30, 6, 1);
+    width: 3em;
+    height: 2.5em;
+    border-radius: 0em 0.5em 0.5em 0em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-1em);
+    transition: 1s;
+    margin-left: 1em;
+}
+
 .TodoListMenu .todolist .Bigtitle{
     font-size: 1em;
     padding-left: 0.8em;
@@ -32,11 +65,25 @@
     top: 1.8em;
     color: #828282;
 }
+
+
 .TodoListMenu .AddIcon{
     position: absolute;
     right: 1.5em;
     bottom: 2em;
     background-color: rgba(63,191, 91, 0.3);
+    width: 3em;
+    height: 3em;
+    border-radius: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.TodoListMenu .DeleteIcon{
+    position: absolute;
+    left: 1.5em;
+    bottom: 2em;
+    background-color: rgba(214, 30, 6, 0.884);
     width: 3em;
     height: 3em;
     border-radius: 2em;

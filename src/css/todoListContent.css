@@ -33,6 +33,7 @@
     font-size: 1.5em;
     margin-left: 0.85em;
     margin-bottom: 1em;
+    font-weight: 700;
 }
 .TodoListContentBody textarea{
 
@@ -41,8 +42,8 @@
     width: 90%;
     height: 75vh;
     color: #fff;
-    font-size: 1.5em;
-    margin-left: 0.85em;
+    font-size: 1.3em;
+    margin-left: 1em;
     margin-bottom: 1em;
 }
 

@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import TodoListContent from './route/todoListContent';
+import AddTodoList from './route/addtodoList';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter as Router , Switch , Route} from 'react-router-dom';
@@ -12,6 +13,7 @@ ReactDOM.render(
     <Router>
         <Switch>
             <Route path="/TodoListContent" component={TodoListContent}/>
+            <Route path="/AddTodoList" component={AddTodoList}/>
             <Route path="/" component={App}/>
         </Switch>
     </Router>
