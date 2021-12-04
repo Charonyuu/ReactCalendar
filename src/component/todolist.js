@@ -7,14 +7,30 @@ import {Link} from 'react-router-dom';
 
 //database
 import {config} from '../settings/firebaseConfig';
-import { getFirestore, collection, getDocs } from "firebase/firestore";
+import { getFirestore, collection, getDocs,deleteDoc,doc } from "firebase/firestore";
 import { getApp, getApps, initializeApp } from "firebase/app";
 getApps().length === 0 ? initializeApp(config) : getApp();
 
 function Todolist(props) {
     const db = getFirestore();
+    
+      async function deleteTodo(ID) {
+        await deleteDoc(doc(db, "todolist", ID));
+        setShowBtn('hideDeleteBtn')
+      }
+      
+    //deleteBtn
+    const [showBtn,setShowBtn] = useState('hideDeleteBtn')
+    function toggleBtn(params) {
+      if(showBtn === 'hideDeleteBtn'){
+        setShowBtn('showDeleteBtn')
+      }else{
+        setShowBtn('hideDeleteBtn')
+      }
+    }
+
+    //listData
     const [listData,setlistData]=useState([]);
-   
     useEffect(()=>{
         async function readData() {
           const querySnapshot = await getDocs(collection(db, "todolist"));
@@ -30,32 +46,19 @@ function Todolist(props) {
         readData();
         // console.log(listData)
     
-      },[db]); 
-      
-    //deleteBtn
-    const [showBtn,setShowBtn] = useState('hideDeleteBtn')
-    const [todobarChange,settodobarChange] = useState('')
-    function toggleBtn(params) {
-      if(showBtn == 'hideDeleteBtn'){
-        setShowBtn('showDeleteBtn')
-      }else{
-        setShowBtn('hideDeleteBtn')
-      }
-    }
+      },[db,showBtn]); 
     return (
         <div className='TodoListMenu'>
             {listData.map((list, index)=>
-              <div className='todolistBar'>
+              <div className='todolistBar' key={index}>
                 <Link to={{
                   pathname: "/TodoListContent",
                   state: list
-                  }} className='todolist'  key={index}>
-                  
+                  }} className='todolist'  >
                     <span className='Bigtitle'>{list.title}</span> 
                     <span className='time'>{list.time}</span>
-                  
                 </Link>
-                <div className={showBtn}><BsTrash className='icon' size={20}/></div>
+                <div className={showBtn} onClick={() =>{deleteTodo(list.id)}}><BsTrash className='icon' size={20}/></div>
               </div>
             )}
             <Link to={{

@@ -33,11 +33,12 @@
 }
 .TodoListMenu .todolistBar .hideDeleteBtn{
     visibility: hidden;
-    transition: 0.5s;
+    transform: translateX(1em);
+    transition: 1s;
 }
 .TodoListMenu .todolistBar .hideDeleteBtn .icon{
     display: none;
-    transition: 0.5s;
+    transition: 1s;
 }
 .TodoListMenu .todolistBar .showDeleteBtn{
     visibility: visible;

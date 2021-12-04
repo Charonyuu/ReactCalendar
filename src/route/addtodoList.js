@@ -1,4 +1,4 @@
-import React,{useEffect, useState} from 'react';
+import React,{useState} from 'react';
 import '../css/todoListContent.css';
 import { AiOutlineLeft } from "react-icons/ai";
 import {Link} from 'react-router-dom';
@@ -25,7 +25,7 @@ function AddTodoList(props) {
   }
 
   async function addTodoList() {
-    if(titleText == '標題' && contentText == '內容'){
+    if(titleText === '標題' && contentText === '內容'){
       console.log('nothing')
     }else{
       await setDoc(doc(db, "todolist", todoID), {
