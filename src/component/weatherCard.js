@@ -77,9 +77,9 @@ function WeatherCard() {
             <div className='weatherIcon'>
                 { currentWeather.description === '晴'? <img src={SunnyIcon} alt="" />:
                   currentWeather.description === '多雲'? <img src={WindyIcon} alt="" />:
-                  currentWeather.description === 3?<img src={SmallrainIcon} alt="" />:
-                  currentWeather.description === 4?<img src={BigrainIcon} alt="" />:
-                  currentWeather.description === 5?<img src={StormRainIcon} alt="" />:
+                  currentWeather.description === '陰有雨'?<img src={SmallrainIcon} alt="" />:
+                  currentWeather.description === '雨'?<img src={BigrainIcon} alt="" />:
+                  currentWeather.description === '雷雨'?<img src={StormRainIcon} alt="" />:
                   currentWeather.description === '陰'?<img src={CloudFogIcon} alt="" />:<CloudySunIcon/>} 
             </div>
             <div className='locationName'>

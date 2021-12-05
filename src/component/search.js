@@ -8,7 +8,7 @@ function search(props) {
     return (
         <div className='SearchingMenu'>
             <div className='Bar'>
-                <input className='searchBar' type="text" placeholder='關鍵字'/>
+                <input type="text" placeholder='關鍵字' />
                 <BsSearch className='Icon' size={20}/>
             </div>
         </div>

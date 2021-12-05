@@ -34,7 +34,7 @@ function TodoListContent(props) {
   return (
     <div className='TodoListContentBody'>
       <div className='Header'>
-        <Link to="/" style={{textDecoration: 'none',color:'#fff'}}><AiOutlineLeft size={20} onClick={addTodoList}/></Link>
+        <Link to="/main" style={{textDecoration: 'none',color:'#fff'}}><AiOutlineLeft size={20} onClick={addTodoList}/></Link>
         <div className='Title'>備忘錄</div>
       </div>
       <div className='Body'>

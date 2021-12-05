@@ -1,9 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+
+import App from './route/App';
 import TodoListContent from './route/todoListContent';
 import AddTodoList from './route/addtodoList';
+import Main from './route/main';
+
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter as Router , Switch , Route} from 'react-router-dom';
@@ -14,7 +17,8 @@ ReactDOM.render(
         <Switch>
             <Route path="/TodoListContent" component={TodoListContent}/>
             <Route path="/AddTodoList" component={AddTodoList}/>
-            <Route path="/" component={App}/>
+            <Route path="/main" component={App}/>
+            <Route path="/" component={Main}/>
         </Switch>
     </Router>
   </React.StrictMode>,
