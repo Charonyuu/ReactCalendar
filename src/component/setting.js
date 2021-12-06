@@ -1,12 +1,20 @@
-import React, { useState } from 'react';
+import React, {useState, useContext} from 'react';
+import {AuthContext, STATUS} from '../route/account/AuthContext';
 import '../css/setting.css';
 
-function Setting(props) {
+function Setting() {
     const [editable] = useState({editable:false,text:'編輯'})
+
+
+    //Status
+    const authContext = useContext(AuthContext);
+    const changeStatus = function(){
+        authContext.setStatus(STATUS.toSignIn);
+    }
     return (
         <div className='SettingMenu'>
             <div className='editIcon' >{editable.text}</div>
-            <div className="logoutIcon" onClick={()=>props.logout()}>登出</div>
+            <div className="logoutIcon" onClick={changeStatus}>登出</div>
         </div>
     );
 }

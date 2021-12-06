@@ -1,7 +1,7 @@
-import React , {useState} from 'react';
+import React , {useState,useContext} from 'react';
 import '../../css/register.css';
 import Logo from '../../images/Logo.png'
-    
+import {AuthContext, STATUS} from './AuthContext';   
 //database
 import { getApps, initializeApp } from "firebase/app";  
 import { getAuth, createUserWithEmailAndPassword,updateProfile } from "firebase/auth";
@@ -11,8 +11,8 @@ function RegisterPage(props) {
     if (getApps().length===0) {
         initializeApp(config);
     }
-
-    // accout
+    
+    // account
     const [account, setAccount] = useState({email:"",password:"", name:"",location:""});
     const handleChange = function(e){
       setAccount({...account,[e.target.name]:e.target.value})
@@ -20,7 +20,7 @@ function RegisterPage(props) {
     }
 
     //SignUp
-    const [message, setMessage] = useState("");
+    const authContext = useContext(AuthContext);
     const handleSubmit = async function(){
         try {
           const auth = getAuth();
@@ -28,16 +28,17 @@ function RegisterPage(props) {
           if (res) {
             await updateProfile(auth.currentUser,{displayName: account.name,location: account.location});
           }
-          setMessage("");
+          authContext.setStatus(STATUS.toSignIn);
+          console.log(authContext)
         }
         catch(error){
-          setMessage(""+error);
+          console.log('err')
         }
-        console.log(message)
+        
     }
     //Status
     const changeStatus = function(){
-      props.setStatus("signIn");
+      authContext.setStatus(STATUS.toSignIn);
     }
 
   return (

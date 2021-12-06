@@ -1,26 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-
-import App from './route/App';
-import TodoListContent from './route/todoListContent';
-import AddTodoList from './route/addtodoList';
-import Main from './route/main';
-
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
-import {BrowserRouter as Router , Switch , Route} from 'react-router-dom';
-
+import AppRouter from './AppRoute';
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
-        <Switch>
-            <Route path="/TodoListContent" component={TodoListContent}/>
-            <Route path="/AddTodoList" component={AddTodoList}/>
-            <Route path="/main" component={App}/>
-            <Route path="/" component={Main}/>
-        </Switch>
-    </Router>
+    <AppRouter/>
   </React.StrictMode>,
   document.getElementById('root')
 );

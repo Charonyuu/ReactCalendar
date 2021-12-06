@@ -73,3 +73,9 @@
     font-weight: 600;
     text-decoration: underline;
 }
+.warnText{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: red;
+}

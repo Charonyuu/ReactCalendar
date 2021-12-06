@@ -56,8 +56,8 @@ function App(props) {
       </div>
       
       <div className={drawer}>
-        <span  className="closebtn" onClick={() => closeDrawer()}>&times;</span>
-        { drawerNumber===1?<div><span>今日天氣</span><WeatherCard aaa={true}/></div>:
+        <span className="closebtn" onClick={() => closeDrawer()}>&times;</span>
+        { drawerNumber===1?<div><span>今日天氣</span><WeatherCard/></div>:
           drawerNumber===2?<div><span>備忘錄</span><Todolist/></div>:
           drawerNumber===3?<div><span>行事曆建立</span><AddCalendar/></div>:
           drawerNumber===4?<div><span>搜尋</span><Search/></div>:
