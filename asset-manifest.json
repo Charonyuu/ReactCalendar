@@ -1,0 +1,34 @@
+{
+  "files": {
+    "main.css": "/ReactCalendar/static/css/main.a9832486.chunk.css",
+    "main.js": "/ReactCalendar/static/js/main.08182449.chunk.js",
+    "main.js.map": "/ReactCalendar/static/js/main.08182449.chunk.js.map",
+    "runtime-main.js": "/ReactCalendar/static/js/runtime-main.6bbaa14f.js",
+    "runtime-main.js.map": "/ReactCalendar/static/js/runtime-main.6bbaa14f.js.map",
+    "static/js/2.2159e468.chunk.js": "/ReactCalendar/static/js/2.2159e468.chunk.js",
+    "static/js/2.2159e468.chunk.js.map": "/ReactCalendar/static/js/2.2159e468.chunk.js.map",
+    "static/js/3.3d4d58bb.chunk.js": "/ReactCalendar/static/js/3.3d4d58bb.chunk.js",
+    "static/js/3.3d4d58bb.chunk.js.map": "/ReactCalendar/static/js/3.3d4d58bb.chunk.js.map",
+    "index.html": "/ReactCalendar/index.html",
+    "service-worker.js": "/ReactCalendar/service-worker.js",
+    "service-worker.js.map": "/ReactCalendar/service-worker.js.map",
+    "static/css/main.a9832486.chunk.css.map": "/ReactCalendar/static/css/main.a9832486.chunk.css.map",
+    "static/js/2.2159e468.chunk.js.LICENSE.txt": "/ReactCalendar/static/js/2.2159e468.chunk.js.LICENSE.txt",
+    "static/media/Bigrain.a79eaa8d.png": "/ReactCalendar/static/media/Bigrain.a79eaa8d.png",
+    "static/media/CloudFog.d1cf7c9b.png": "/ReactCalendar/static/media/CloudFog.d1cf7c9b.png",
+    "static/media/CloudySun.e813d15b.svg": "/ReactCalendar/static/media/CloudySun.e813d15b.svg",
+    "static/media/Logo.1c0a2809.png": "/ReactCalendar/static/media/Logo.1c0a2809.png",
+    "static/media/Smallrain.467b60bc.png": "/ReactCalendar/static/media/Smallrain.467b60bc.png",
+    "static/media/StormRain.33da5567.png": "/ReactCalendar/static/media/StormRain.33da5567.png",
+    "static/media/Sunny.e7152756.png": "/ReactCalendar/static/media/Sunny.e7152756.png",
+    "static/media/Windy.9ceb0282.png": "/ReactCalendar/static/media/Windy.9ceb0282.png",
+    "static/media/humid.22cd812f.svg": "/ReactCalendar/static/media/humid.22cd812f.svg",
+    "static/media/windBlow.3b3541e4.svg": "/ReactCalendar/static/media/windBlow.3b3541e4.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.6bbaa14f.js",
+    "static/js/2.2159e468.chunk.js",
+    "static/css/main.a9832486.chunk.css",
+    "static/js/main.08182449.chunk.js"
+  ]
+}
