@@ -8,7 +8,7 @@ import CalendarContent from './route/calendarContent';
 import Main from './route/main';
 
 
-import {BrowserRouter as Router , Switch , Route} from 'react-router-dom';
+import {HashRouter as Router , Switch , Route} from 'react-router-dom';
 
 import {AuthContext, STATUS} from './route/account/AuthContext';
 
