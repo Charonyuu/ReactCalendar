@@ -4,6 +4,7 @@ import './index.css';
 import App from './route/App';
 import TodoListContent from './route/todoListContent';
 import AddTodoList from './route/addtodoList';
+import CalendarContent from './route/calendarContent';
 import Main from './route/main';
 
 
@@ -20,6 +21,7 @@ export default function AppRouter(){
                 <Switch>
                     <Route path="/TodoListContent" component={TodoListContent}/>
                     <Route path="/AddTodoList" component={AddTodoList}/>
+                    <Route path="/CalendarContent" component={CalendarContent}/>
                     <Route path="/main" component={App}/>
                     <Route path="/" component={Main}/>
                 </Switch>

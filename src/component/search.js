@@ -3,7 +3,7 @@ import { BsSearch } from "react-icons/bs";
 import '../css/search.css';
 
 
-function search(props) {
+function Search(props) {
     
     return (
         <div className='SearchingMenu'>
@@ -15,4 +15,4 @@ function search(props) {
     );
 }
 
-export default search;
+export default Search;

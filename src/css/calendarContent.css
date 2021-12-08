@@ -1,0 +1,30 @@
+.CalendarContentBody{
+    font-size: 14px;
+    height:100vh;
+    width:100vw;
+    background-color: #212121;
+    color: #fff;
+}
+.CalendarContentBody .Header{
+    height: 5vh;
+    display: flex;
+    padding: 1.5em 1.3em;
+    position: relative;
+    align-items: center;
+}
+.CalendarContentBody .Title{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.5em;
+    font-weight: 700;
+    padding-bottom: 0.3em;
+}
+.CalendarContentBody .Body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
