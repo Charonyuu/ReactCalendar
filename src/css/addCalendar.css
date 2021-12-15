@@ -12,10 +12,6 @@
     font-size: 1.5em;
     margin-left: 0.3em;
 }
-.AddCalendarMenu div{
-    color: lightgray;
-    
-}
 .AddCalendarMenu  .ColourBox{
     display: flex;
     width: 13em;
@@ -33,7 +29,6 @@
 }
 .Colour:nth-child(2){
     background-color: #ffae00	;
-    border: 2px solid black;
 }
 .Colour:nth-child(3){
     background-color: #0060BF	;
@@ -43,4 +38,21 @@
 }
 .Colour:nth-child(5){
     background-color: #ff00f2;
+}
+.select{
+    border: 2px solid black;
+}
+.typeOptionList{
+    display: flex;
+    justify-content: space-evenly;
+}
+.typeoption{
+    width: 7em;
+    height: 1.5em;
+    padding-top: 0.15em;
+    font-size: 1.2em;
+    display: inline-flex;
+    justify-content: center;
+    background-color: #212121;
+    border-radius: 0.5em;
 }
