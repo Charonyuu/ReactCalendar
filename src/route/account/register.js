@@ -6,8 +6,9 @@ import {AuthContext, STATUS} from './AuthContext';
 import { getApps, initializeApp } from "firebase/app";  
 import { getAuth, createUserWithEmailAndPassword,updateProfile } from "firebase/auth";
 import {config} from '../../settings/firebaseConfig';
-
+import { getFirestore,doc, setDoc,} from "firebase/firestore";
 function RegisterPage(props) {
+    const db = getFirestore();
     if (getApps().length===0) {
         initializeApp(config);
     }
@@ -26,10 +27,16 @@ function RegisterPage(props) {
           const auth = getAuth();
           const res = await createUserWithEmailAndPassword(auth, account.email, account.password);
           if (res) {
-            await updateProfile(auth.currentUser,{displayName: account.name,location: account.location});
+            await updateProfile(auth.currentUser,{displayName: account.name});
           }
+          console.log(auth.currentUser.uid)
           authContext.setStatus(STATUS.toSignIn);
-          console.log(authContext)
+          // console.log(authContext)
+          await setDoc(doc(db, "user", auth.currentUser.uid), {
+            id:auth.currentUser.uid,
+            userName: account.name,
+            location: account.location,
+          });
         }
         catch(error){
           console.log('err')

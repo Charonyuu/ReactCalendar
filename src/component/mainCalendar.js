@@ -105,7 +105,7 @@ function MainCalendar(props) {
               let data = {Year:currentYear,Month:displayMonth,Day:day.date}
               return (
                 
-                <td key={i}>
+                <td key={i} valign="top">
                 {/*console.log(currentYear+"/"+displayMonth+"/"+day.date)*/}
                 <Link to={{
                   pathname: "/CalendarContent",

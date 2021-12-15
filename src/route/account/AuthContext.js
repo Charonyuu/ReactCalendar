@@ -4,9 +4,11 @@ export const STATUS = {
   toSignOut: 2,
   toSignUp: 0,
 };
+// export const USERID = '';
 
 export const AuthContext = React.createContext({
-    status: STATUS.toSignIn,setStatus:(newStatus)=>{this.status=newStatus}
+    status: STATUS.toSignIn,setStatus:(newStatus)=>{this.status=newStatus},
+    // user: USERID,setuser:(newUser)=>{this.status=newUser}
   })
 
 /*

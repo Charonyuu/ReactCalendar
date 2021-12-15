@@ -30,6 +30,7 @@ function LoginPage(props) {
           if (res) {
             //console.log(auth.currentUser.displayName);
             authContext.setStatus(STATUS.toSignOut);
+            // authContext.setuser(account.email)
           }
         }
         catch(error){  
