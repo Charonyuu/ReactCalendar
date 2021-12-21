@@ -7,6 +7,7 @@ import {Link} from 'react-router-dom';
 import {config} from '../settings/firebaseConfig';
 import { getFirestore,doc, setDoc,serverTimestamp} from "firebase/firestore";
 import { getApp, getApps, initializeApp } from "firebase/app";
+import { getAuth,} from "firebase/auth";
 getApps().length === 0 ? initializeApp(config) : getApp();
     
 function TodoListContent(props) {
@@ -23,7 +24,8 @@ function TodoListContent(props) {
   // console.log(contentText)
 
   async function addTodoList() {
-    await setDoc(doc(db, "todolist", todoID), {
+    const auth = getAuth();
+    await setDoc(doc(db, "user" ,auth.currentUser.uid , "todolist", todoID), {
       id:todoID,
       title:titleText,
       content:contentText,

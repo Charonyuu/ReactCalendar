@@ -64,7 +64,7 @@ function Setting() {
     return (
         <div className='SettingMenu'>
           <input type="text"  value={userName} onChange={e => setuserName(e.target.value)}/>
-          <input type="text"  value={location} onChange={e => setLocation(e.target.value)}/>
+          <input type="text" placeholder='未填寫地址'  value={location} onChange={e => setLocation(e.target.value)}/>
           <input type="text"  value={email} onChange={e => setEmail(e.target.value)}/>
           <input type="password"  placeholder='設置新密碼'  value={password} onChange={e => setPassword(e.target.value)}/><span onClick={edit}>確定</span>
             <div className='editIcon' onClick={edit}>{editable.text}</div>

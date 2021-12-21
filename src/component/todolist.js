@@ -9,13 +9,15 @@ import {Link} from 'react-router-dom';
 import {config} from '../settings/firebaseConfig';
 import { getFirestore, collection, getDocs,deleteDoc,doc } from "firebase/firestore";
 import { getApp, getApps, initializeApp } from "firebase/app";
+import { getAuth,} from "firebase/auth";
 getApps().length === 0 ? initializeApp(config) : getApp();
 
 function Todolist(props) {
+    const auth = getAuth();
     const db = getFirestore();
     
       async function deleteTodo(ID) {
-        await deleteDoc(doc(db, "todolist", ID));
+        await deleteDoc(doc(db, "user" ,auth.currentUser.uid, "todolist", ID));
         setShowBtn('hideDeleteBtn')
       }
       
@@ -33,7 +35,8 @@ function Todolist(props) {
     const [listData,setlistData]=useState([]);
     useEffect(()=>{
         async function readData() {
-          const querySnapshot = await getDocs(collection(db, "todolist"));
+          
+          const querySnapshot = await getDocs(collection(db, "user" ,auth.currentUser.uid, "todolist"));
           const temp = [];
           querySnapshot.forEach((doc) => {
             // doc.data() is never undefined for query doc snapshots

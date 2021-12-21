@@ -18,6 +18,7 @@ import {config} from '../settings/firebaseConfig';
 
 function App(props) {
   const auth = getAuth();
+
   console.log(auth)
   //Drawer
   const [drawer,setDra]=useState('CloseSidenav')
@@ -63,7 +64,7 @@ function App(props) {
         <span className="closebtn" onClick={() => closeDrawer()}>&times;</span>
         { drawerNumber===1?<div><span className='sidenav'>今日天氣</span><WeatherCard/></div>:
           drawerNumber===2?<div><span className='sidenav'>備忘錄</span><Todolist/></div>:
-          drawerNumber===3?<div><span className='sidenav'>行事曆建立</span><AddCalendar/></div>:
+          drawerNumber===3?<div><span className='sidenav'>行事曆建立</span><AddCalendar close={() => closeDrawer()}/></div>:
           drawerNumber===4?<div><span className='sidenav'>搜尋</span><Search/></div>:
           drawerNumber===5?<div><span className='sidenav'>設定</span><Setting logout={logout}/></div>:<span></span>}    
       </div>

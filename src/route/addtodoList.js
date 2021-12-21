@@ -7,6 +7,7 @@ import {Link} from 'react-router-dom';
 import {config} from '../settings/firebaseConfig';
 import { getFirestore,doc, setDoc,serverTimestamp} from "firebase/firestore";
 import { getApp, getApps, initializeApp } from "firebase/app";
+import { getAuth,} from "firebase/auth";
 getApps().length === 0 ? initializeApp(config) : getApp();
     
 function AddTodoList(props) {
@@ -25,10 +26,11 @@ function AddTodoList(props) {
   }
 
   async function addTodoList() {
+    const auth = getAuth();
     if(titleText === '標題' && contentText === '內容'){
       console.log('nothing')
     }else{
-      await setDoc(doc(db, "todolist", todoID), {
+      await setDoc(doc(db, "user" ,auth.currentUser.uid , "todolist", todoID), {
         id:todoID,
         title:titleText,
         content:contentText,
