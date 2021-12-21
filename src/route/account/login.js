@@ -29,7 +29,7 @@ function LoginPage(props) {
           const res = await signInWithEmailAndPassword(auth, account.email, account.password);
           if (res) {
             //console.log(auth.currentUser.displayName);
-            authContext.setStatus(STATUS.toSignOut);
+            authContext.setStatus(auth.lastNotifiedUid);
             // authContext.setuser(account.email)
           }
         }

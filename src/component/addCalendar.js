@@ -12,32 +12,46 @@ function AddCalendar(props) {
     const [selected1,setSelected1] = useState(0)
     const typeoOptions = ["單日", "多日"];
     function changeOption1(index) {
-        console.log(index)
+        setSelected1(index)
     }
     return (
         <div className='AddCalendarMenu'>
             <div>
                 <input type="text" placeholder='標題'/>
+                <input type="text" placeholder='時間'/>
+                <input type="text" placeholder='備註'/>
             </div>
             <div className='typeOptionList'>
             {typeoOptions.map((option,i) => {
-                {selected1 }
+                
                 return <span className='typeoption' key={i} onClick={() =>changeOption1(i)}>{option}</span>
             })}
             </div>
-            <div>選擇日期:</div>
-            <DatePicker
+            {selected1===0?
+                <div><br/><div>選擇日期:</div><DatePicker
+                    selected={date}
+                    onChange={(date) => setDate(date)}
+                    onCalendarClose={handleCalendarClose}
+                    onCalendarOpen={handleCalendarOpen}
+                /></div>:
+                <div><br/><div>選擇開始日期:</div><DatePicker
                 selected={date}
                 onChange={(date) => setDate(date)}
                 onCalendarClose={handleCalendarClose}
                 onCalendarOpen={handleCalendarOpen}
-            />
+            /><div>選擇結束日期:</div><DatePicker
+                selected={date}
+                onChange={(date) => setDate(date)}
+                onCalendarClose={handleCalendarClose}
+                onCalendarOpen={handleCalendarOpen}
+            /></div>}
+            
             <div>選擇顏色</div>
             <div className="ColourBox">
                 <div className='Colour'/><div className='Colour'/><div className='Colour'/><div className='Colour'/><div className='Colour'/>
             </div>
             
-            
+            <div className="createBtn">建立</div>
         </div> 
     );
 }

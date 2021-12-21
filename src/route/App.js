@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState,useContext} from 'react';
 import '../css/main.css';
 import AppMenu from '../component/AppMenu';
 import MainCalendar from '../component/mainCalendar'
@@ -8,6 +8,8 @@ import Todolist from '../component/todolist'
 import AddCalendar from '../component/addCalendar'
 import Search from '../component/search'
 import Setting from '../component/setting'
+import {AuthContext} from './account/AuthContext';
+
 
 //firebase
 import { getApps, initializeApp } from "firebase/app";
@@ -15,6 +17,8 @@ import { getAuth, signOut } from "firebase/auth";
 import {config} from '../settings/firebaseConfig';
 
 function App(props) {
+  const auth = getAuth();
+  console.log(auth)
   //Drawer
   const [drawer,setDra]=useState('CloseSidenav')
   const [drawerNumber,setDraNum]=useState(0)
