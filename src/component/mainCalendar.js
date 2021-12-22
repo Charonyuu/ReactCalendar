@@ -1,9 +1,13 @@
-import React,{useState} from 'react';
+import React,{useState, useContext} from 'react';
 import '../css/mainCalendar.css';
 import { AiOutlineLeft,AiOutlineRight } from "react-icons/ai";
 import {Link} from 'react-router-dom';
+import { getFirestore,getDocs,collection} from "firebase/firestore";
+import {AuthContext, STATUS} from '../route/account/AuthContext';
 
 function MainCalendar(props) {
+  const authContext = useContext(AuthContext);
+  const db=getFirestore();
   //設定月與日
   const MONTHS = [
     "January","February","March","April",
@@ -71,7 +75,24 @@ function MainCalendar(props) {
   };
 
   
+   
+  function searchNotificationAmount(date){
+    console.log(authContext.status)
+    let count=0
+    if(Number.isInteger(date)){
+      /*
+      const querySnapshot = await getDocs(collection(db, "user"));
+      querySnapshot.forEach((doc) => {
+ 
+        console.log(doc.id, " => ", doc.data().id);
+});*/return <p>sssss</p>
+    }
+   }
 
+   function test(){
+     searchNotificationAmount();
+
+   }
 
 
   //顯示畫面
@@ -113,6 +134,7 @@ function MainCalendar(props) {
                   }}  style={{color:'#212121'}}>
                   {day.date}
                   </Link>
+                  {searchNotificationAmount(day.date)}
                 </td>
                 
               );
