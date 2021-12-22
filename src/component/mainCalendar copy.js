@@ -1,16 +1,11 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import '../css/mainCalendar.css';
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 import { Link } from 'react-router-dom';
 import { getFirestore, getDocs, collection, query, where } from "firebase/firestore";
 import { AuthContext, STATUS } from '../route/account/AuthContext';
-import { getApp, getApps, initializeApp } from "firebase/app";
-import { getAuth, updatePassword } from "firebase/auth";
-import { config } from '../settings/firebaseConfig';
-getApps().length === 0 ? initializeApp(config) : getApp();
 
 function MainCalendar(props) {
-  const auth = getAuth();
   const authContext = useContext(AuthContext);
   const db = getFirestore();
   //設定月與日
@@ -23,14 +18,13 @@ function MainCalendar(props) {
 
   //紀錄時間
   const [today] = useState(new Date())
-  const [currentMonth, setCurrentMonth] = useState(today.getMonth() + 1)
+  const [currentMonth, setCurrentMonth] = useState(today.getMonth())
   const [currentYear, setCurrentYear] = useState(today.getFullYear())
-  const [daysArray, setDaysArray] = useState([])
-
+  const [notes, setNotes] = useState('')
   //設定下一個月
   function setNextMonth(params) {
-    if (currentMonth >= 12) {
-      setCurrentMonth(1)
+    if (currentMonth === 11) {
+      setCurrentMonth(0)
       setCurrentYear(currentYear + 1)
     } else {
       setCurrentMonth(currentMonth + 1)
@@ -39,83 +33,78 @@ function MainCalendar(props) {
 
   //設定上一個月
   function setPrevMonth(params) {
-    if (currentMonth <= 1) {
-      setCurrentMonth(12)
+    if (currentMonth === 0) {
+      setCurrentMonth(11)
       setCurrentYear(currentYear - 1)
     } else {
       setCurrentMonth(currentMonth - 1)
     }
   }
 
-
-
-
-
-
-  const readData = async () => {
-
-    const FirstDay = new Date(currentYear, currentMonth - 1).getDay()
-    const daysInMonth = new Date(currentYear, currentMonth, 0).getDate()
-    console.log(currentYear + "   and" + currentMonth)
-    console.log(FirstDay)
-    console.log(daysInMonth)
-
-
+  //weekNum計算
+  const dayInMonth = (year, month) => {
+    //當月第一天
+    const FirstDay = new Date(year, month).getDay()
+    //算當月有幾天
+    const Days = 32 - new Date(year, month, 32).getDate()
     let date = 1;
-    let everydays = [];
-    let weekNum = daysInMonth => {
-      return Math.ceil((daysInMonth + FirstDay) / 7);
+    let daysInMonth = [];
+    let weekNum = Days => {
+      return Math.ceil((Days + FirstDay) / 7);
     };
 
-    for (let i = 0; i < weekNum(daysInMonth); i++) {
+    for (let i = 0; i < weekNum(Days); i++) {
       let week = [];
       let day = {
         date: '',
         count: 0
       }
       for (let j = 0; j < 7; j++) {
-        let counter = 0;
-        let displayMonth = currentMonth > 9 ? currentMonth : String("0" + currentMonth)
-        const q = query(collection(db, "user/" + auth.currentUser.uid + "/calendar"), where("date", "==", currentYear + "/" + displayMonth + "/" + date));
+        // let counter = 0;
+        // const q = query(collection(db, "user/UJaIJMxKE4O4h0BbCjLl1YCXZAI3/calendar"), where("date", "==", "2021/12/11"));
 
-        const querySnapshot = await getDocs(q);
-        querySnapshot.forEach((doc) => {
-          counter++
-        });
+        // const querySnapshot = getDocs(q);
+        // querySnapshot.forEach((doc) => {
+        //   counter++
+        // });
 
 
         if (i === 0 && j < FirstDay) {
-          day.count = counter
+          day.count = date
           week.push(day);
 
-        } else if (date > daysInMonth) {
-          day.count = counter
+        } else if (date > Days) {
+          day.count = date
           week.push(day);
         } else {
-          day.count = counter
+          day.count = date
           week.push({ ...day, date });
           date++;
         }
 
       }
 
-      everydays.push(week);
-
+      daysInMonth.push(week);
     }
-
-    setDaysArray([...everydays])
-
-  }
-
-
-
-  useEffect(() => {
-
-    readData()
-  }, [currentMonth]);
+    console.log(daysInMonth)
+    return daysInMonth;
+  };
 
 
 
+
+  var date = new Date();
+  var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+  var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+  console.log(firstDay + "    " + lastDay)
+
+
+
+
+
+  //顯示畫面
+  const days = dayInMonth(currentYear, currentMonth);
+  const displayMonth = MONTHS[currentMonth]
 
   return (
     <div className='Calendarbody'>
@@ -125,7 +114,7 @@ function MainCalendar(props) {
             <td colSpan="100%" className='titleCalendar'>
               <div>
                 <span onClick={() => setPrevMonth()}><AiOutlineLeft /></span>
-                <span className='titleText'> {currentMonth}月{currentYear}年 </span>
+                <span className='titleText'> {displayMonth}{currentYear} </span>
                 <span onClick={() => setNextMonth()}><AiOutlineRight /></span>
               </div>
             </td>
@@ -138,10 +127,10 @@ function MainCalendar(props) {
               return <td key={i} className='weekContent'>{title}</td>;
             })}
           </tr>
-          {console.log(daysArray)}
-          {daysArray.map((week, i) => {
+
+          {days.map((week, i) => {
             const days = week.map((day, i) => {
-              let data = { Year: currentYear, Month: currentMonth, Day: day.date }
+              let data = { Year: currentYear, Month: displayMonth, Day: day.date }
               return (
 
                 <td key={i} valign="top">
@@ -152,15 +141,13 @@ function MainCalendar(props) {
                   }} style={{ color: '#212121' }}>
                     {day.date}
                   </Link>
-                  {day.count > 0 ? <p className='round'>{day.count}</p> : <p></p>}
+                  {(Number.isInteger(day.date)) ? <p>{day.count}個行程</p> : <p></p>}
                 </td>
 
               );
             });
             return <tr key={i} className='CalendarContent'>{days}</tr>;
           })}
-
-
         </tbody>
         <tfoot>
           <tr ><td colSpan="100%" className='footerCalendar' ></td></tr>

@@ -48,3 +48,15 @@
     background-color: rgba(63,191, 91, 0.3);
     border-radius: 0em 0em 1em 1em;
 }
+
+
+.round{
+    
+    background-color: red; 
+    width: 2em;
+    height: 2em;
+    border-radius:999em;
+    margin:0.5em auto 0 auto;
+    
+    
+}
