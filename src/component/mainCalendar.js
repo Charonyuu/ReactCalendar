@@ -1,14 +1,20 @@
 import React, { useState, useContext, useEffect } from 'react';
 import '../css/mainCalendar.css';
-// import MainCalendarOrigin from './mainCalendarOrigin'
+
+//mui
+import { CircularProgress } from '@mui/material';
+//icon
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 import { Link } from 'react-router-dom';
+
+//database
 import { getFirestore, getDocs, collection, query, where } from "firebase/firestore";
 import { AuthContext, STATUS } from '../route/account/AuthContext';
 import { getApp, getApps, initializeApp } from "firebase/app";
 import { getAuth, updatePassword } from "firebase/auth";
 import { config } from '../settings/firebaseConfig';
 getApps().length === 0 ? initializeApp(config) : getApp();
+
 
 function MainCalendar(props) {
   const auth = getAuth();
@@ -48,11 +54,11 @@ function MainCalendar(props) {
     }
   }
 
-  //rerender
-  const [render,setRender] = useState(0)
+  //loading
+  const [isLoading, setIsLoading] = useState(false);
 
   const readData = async () => {
-
+    setIsLoading(true);
     const FirstDay = new Date(currentYear, currentMonth - 1).getDay()
     const daysInMonth = new Date(currentYear, currentMonth, 0).getDate()
     console.log(currentYear + "   and" + currentMonth)
@@ -103,7 +109,7 @@ function MainCalendar(props) {
     }
 
     setDaysArray([...everydays])
-    setRender(1)
+    setIsLoading(false);
   }
 
 
@@ -117,8 +123,8 @@ function MainCalendar(props) {
 
 
   return (
-    // {render === 0?<MainCalendarOrigin/>:
       <div className='Calendarbody'>
+      {!isLoading ?
         <table cellPadding="8">
           <thead>
             <tr >
@@ -144,12 +150,12 @@ function MainCalendar(props) {
                 let data = { Year: currentYear, Month: currentMonth, Day: day.date }
                 return (
 
-                  <td key={i} valign="top">
+                  <td className='tdNote' key={i} valign="top">
                     {/*console.log(currentYear+"/"+displayMonth+"/"+day.date)*/}
                     <Link to={{
                       pathname: "/CalendarContent",
                       state: data
-                    }} style={{ color: '#212121' }}>
+                    }} style={{ color: '#212121',zIndex:999 }}>
                       {day.date}
                     </Link>
                     {day.count > 0 ? <p className='round'>{day.count}</p> : <p></p>}
@@ -166,8 +172,10 @@ function MainCalendar(props) {
             <tr ><td colSpan="100%" className='footerCalendar' ></td></tr>
           </tfoot>
         </table>
+        :
+        <CircularProgress />
+      }
       </div>
-    // }
   );
 }
 

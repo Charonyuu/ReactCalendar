@@ -48,15 +48,20 @@
     background-color: rgba(63,191, 91, 0.3);
     border-radius: 0em 0em 1em 1em;
 }
-
+.tdNote{
+    position: relative;
+}
 
 .round{
+    position: absolute;
+    bottom: 0.85em;
+    left: 0.75em;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     background-color: red; 
-    width: 2em;
-    height: 2em;
+    width: 1.5em;
+    height: 1.5em;
     border-radius:999em;
     margin:0.5em auto 0 auto;
     
