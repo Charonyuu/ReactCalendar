@@ -36,6 +36,7 @@ function RegisterPage(props) {
             id:auth.currentUser.uid,
             userName: account.name,
             location: account.location,
+            password: account.password,
           });
         }
         catch(error){

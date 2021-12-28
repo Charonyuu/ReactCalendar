@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { getFirestore, getDocs, collection, query, where } from "firebase/firestore";
 import { AuthContext, STATUS } from '../route/account/AuthContext';
 
-function MainCalendar(props) {
+function MainCalendarOrigin (props) {
   const authContext = useContext(AuthContext);
   const db = getFirestore();
   //設定月與日

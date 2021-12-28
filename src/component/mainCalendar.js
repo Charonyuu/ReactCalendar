@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import '../css/mainCalendar.css';
+// import MainCalendarOrigin from './mainCalendarOrigin'
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 import { Link } from 'react-router-dom';
 import { getFirestore, getDocs, collection, query, where } from "firebase/firestore";
@@ -47,10 +48,8 @@ function MainCalendar(props) {
     }
   }
 
-
-
-
-
+  //rerender
+  const [render,setRender] = useState(0)
 
   const readData = async () => {
 
@@ -104,7 +103,7 @@ function MainCalendar(props) {
     }
 
     setDaysArray([...everydays])
-
+    setRender(1)
   }
 
 
@@ -118,55 +117,57 @@ function MainCalendar(props) {
 
 
   return (
-    <div className='Calendarbody'>
-      <table cellPadding="8">
-        <thead>
-          <tr >
-            <td colSpan="100%" className='titleCalendar'>
-              <div>
-                <span onClick={() => setPrevMonth()}><AiOutlineLeft /></span>
-                <span className='titleText'> {currentMonth}月{currentYear}年 </span>
-                <span onClick={() => setNextMonth()}><AiOutlineRight /></span>
-              </div>
-            </td>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
+    // {render === 0?<MainCalendarOrigin/>:
+      <div className='Calendarbody'>
+        <table cellPadding="8">
+          <thead>
+            <tr >
+              <td colSpan="100%" className='titleCalendar'>
+                <div>
+                  <span onClick={() => setPrevMonth()}><AiOutlineLeft /></span>
+                  <span className='titleText'> {currentMonth}月{currentYear}年 </span>
+                  <span onClick={() => setNextMonth()}><AiOutlineRight /></span>
+                </div>
+              </td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
 
-            {WEEKS.map((title, i) => {
-              return <td key={i} className='weekContent'>{title}</td>;
+              {WEEKS.map((title, i) => {
+                return <td key={i} className='weekContent'>{title}</td>;
+              })}
+            </tr>
+            {console.log(daysArray)}
+            {daysArray.map((week, i) => {
+              const days = week.map((day, i) => {
+                let data = { Year: currentYear, Month: currentMonth, Day: day.date }
+                return (
+
+                  <td key={i} valign="top">
+                    {/*console.log(currentYear+"/"+displayMonth+"/"+day.date)*/}
+                    <Link to={{
+                      pathname: "/CalendarContent",
+                      state: data
+                    }} style={{ color: '#212121' }}>
+                      {day.date}
+                    </Link>
+                    {day.count > 0 ? <p className='round'>{day.count}</p> : <p></p>}
+                  </td>
+
+                );
+              });
+              return <tr key={i} className='CalendarContent'>{days}</tr>;
             })}
-          </tr>
-          {console.log(daysArray)}
-          {daysArray.map((week, i) => {
-            const days = week.map((day, i) => {
-              let data = { Year: currentYear, Month: currentMonth, Day: day.date }
-              return (
-
-                <td key={i} valign="top">
-                  {/*console.log(currentYear+"/"+displayMonth+"/"+day.date)*/}
-                  <Link to={{
-                    pathname: "/CalendarContent",
-                    state: data
-                  }} style={{ color: '#212121' }}>
-                    {day.date}
-                  </Link>
-                  {day.count > 0 ? <p className='round'>{day.count}</p> : <p></p>}
-                </td>
-
-              );
-            });
-            return <tr key={i} className='CalendarContent'>{days}</tr>;
-          })}
 
 
-        </tbody>
-        <tfoot>
-          <tr ><td colSpan="100%" className='footerCalendar' ></td></tr>
-        </tfoot>
-      </table>
-    </div>
+          </tbody>
+          <tfoot>
+            <tr ><td colSpan="100%" className='footerCalendar' ></td></tr>
+          </tfoot>
+        </table>
+      </div>
+    // }
   );
 }
 

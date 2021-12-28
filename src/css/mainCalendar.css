@@ -51,7 +51,9 @@
 
 
 .round{
-    
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: red; 
     width: 2em;
     height: 2em;
