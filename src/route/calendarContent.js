@@ -19,7 +19,16 @@ function CalendarContent(props) {
   const [listData,setlistData]=useState([]);
   useEffect(()=>{
       async function readData() {
-        var date = List.Year + '/' + List.Month + '/'  + List.Day
+        var date = ''
+        if (List.Month < 10 && List.Day < 10){
+          date = List.Year + '/0' + List.Month + '/0'  + List.Day
+        }else if(List.Month > 10 && List.Day < 10){
+          date = List.Year + '/' + List.Month + '/0'  + List.Day
+        }else if(List.Month < 10 && List.Day > 10){
+          date = List.Year + '/0' + List.Month + '/'  + List.Day
+        }else{
+          date = List.Year + '/' + List.Month + '/'  + List.Day
+        }
         console.log(date)
         const querySnapshot = await getDocs(collection(db, "user" ,auth.currentUser.uid, "calendar"));
         const temp = [];

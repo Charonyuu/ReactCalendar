@@ -81,7 +81,8 @@ function MainCalendar(props) {
       for (let j = 0; j < 7; j++) {
         let counter = 0;
         let displayMonth = currentMonth > 9 ? currentMonth : String("0" + currentMonth)
-        const q = query(collection(db, "user/" + auth.currentUser.uid + "/calendar"), where("date", "==", currentYear + "/" + displayMonth + "/" + date));
+        let displayday = date > 9 ? date : String("0" + date)
+        const q = query(collection(db, "user/" + auth.currentUser.uid + "/calendar"), where("date", "==", currentYear + "/" + displayMonth + "/" + displayday));
 
         const querySnapshot = await getDocs(q);
         querySnapshot.forEach((doc) => {
